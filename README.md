@@ -1,4 +1,4 @@
-[![pytest](https://github.com/Zirochkaa/gif-sender/actions/workflows/run_tests.yml/badge.svg?branch=master)](https://github.com/Zirochkaa/gif-sender/actions/workflows/run_tests.yml)
+[![pytest](https://github.com/Zirochkaa/gif-sender-bot/actions/workflows/run_tests.yml/badge.svg?branch=master)](https://github.com/Zirochkaa/gif-sender-bot/actions/workflows/run_tests.yml)
 
 # GIF Sender
 
