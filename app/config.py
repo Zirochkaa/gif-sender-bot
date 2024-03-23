@@ -1,10 +1,23 @@
 from typing import Any, Tuple, Type
 
 from pydantic.fields import FieldInfo
-from pydantic_settings import BaseSettings, SettingsConfigDict, DotEnvSettingsSource, PydanticBaseSettingsSource
+from pydantic_settings import (
+    BaseSettings,
+    SettingsConfigDict,
+    EnvSettingsSource,
+    DotEnvSettingsSource,
+    PydanticBaseSettingsSource,
+)
 
 
-class CommaSeparatedSource(DotEnvSettingsSource):
+class CommaSeparatedEnvSource(EnvSettingsSource):
+    def prepare_field_value(self, field_name: str, field: FieldInfo, value: Any, value_is_complex: bool) -> Any:
+        if field_name == "telegram_usernames":
+            return value.split(",")
+        return super().prepare_field_value(field_name, field, value, value_is_complex)
+
+
+class CommaSeparatedDotEnvSource(DotEnvSettingsSource):
     def prepare_field_value(self, field_name: str, field: FieldInfo, value: Any, value_is_complex: bool) -> Any:
         if field_name == "telegram_usernames":
             return value.split(",")
@@ -36,7 +49,10 @@ class Settings(BaseSettings):
         dotenv_settings: PydanticBaseSettingsSource,
         file_secret_settings: PydanticBaseSettingsSource,
     ) -> Tuple[PydanticBaseSettingsSource, ...]:
-        return (CommaSeparatedSource(settings_cls, env_file="app/.env"),)
+        return (
+            CommaSeparatedEnvSource(settings_cls),
+            CommaSeparatedDotEnvSource(settings_cls, env_file="app/.env"),
+        )
 
 
 settings = Settings()
