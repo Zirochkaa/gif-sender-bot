@@ -49,10 +49,7 @@ class Settings(BaseSettings):
         dotenv_settings: PydanticBaseSettingsSource,
         file_secret_settings: PydanticBaseSettingsSource,
     ) -> Tuple[PydanticBaseSettingsSource, ...]:
-        return (
-            CommaSeparatedEnvSource(settings_cls),
-            CommaSeparatedDotEnvSource(settings_cls, env_file="app/.env"),
-        )
+        return (CommaSeparatedEnvSource(settings_cls),)
 
 
 settings = Settings()
