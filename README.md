@@ -17,7 +17,7 @@ This repository contains pet project - telegram bot designed for sending specifi
    ```shell 
    cp app/.env.template app/.env
    ```
-4. Fill `TELEGRAM_USERNAMES` in `.env` file - it should contain comma separated list of usernames (like `username1,username2,username3`) to which bot will respond. 
+4. Update `TELEGRAM_USERNAMES` in `.env` file - it should contain comma separated list of usernames (like `username1,username2,username3`) to which bot will respond. 
 5. Obtain Telegram Bot Token by creating Telegram Bot. 
 [Here](https://core.telegram.org/bots/tutorial#obtain-your-bot-token) (`Obtain Your Bot Token` section) is a guide on how to do it. 
 Update `TELEGRAM_BOT_TOKEN` in `.env` file.
