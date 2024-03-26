@@ -2,9 +2,9 @@
 
 # GIF Sender
 
-This repository contains pet project - telegram bot designed for sending GIF :)
+This repository contains pet project - telegram bot designed for sending specific GIF to annoying person or even people :)
 
-### Link to the working telegram bot here - [@GIFSenderBot](https://t.me/GIFSenderBot).
+### Link to the working telegram bot here - [@GIFSenderBot](https://t.me/GIFSenderBot) (currently shut down).
 
 ## Run project locally
 
@@ -17,20 +17,11 @@ This repository contains pet project - telegram bot designed for sending GIF :)
    ```shell 
    cp app/.env.template app/.env
    ```
-4. Setup MongoDB. You have few options:
-
-    4.1. you can use any already existing MongoDB (in docker, in any cloud provider, etc.):
-      1. create new database;
-      2. update `DATABASE_URL` in `.env` file;
-
-    4.2. you can set up MongoDB locally. For example, you can use [this](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/) guide or any other guide.
+4. Fill `TELEGRAM_USERNAMES` in `.env` file - it should contain comma separated list of usernames (like `username1,username2,username3`) to which bot will respond. 
 5. Obtain Telegram Bot Token by creating Telegram Bot. 
 [Here](https://core.telegram.org/bots/tutorial#obtain-your-bot-token) (`Obtain Your Bot Token` section) is a guide on how to do it. 
 Update `TELEGRAM_BOT_TOKEN` in `.env` file.
-6. If you want to receive logs notifications (when user takes medication or when new user starts using bot) you need to fill `TELEGRAM_CHANNEL_ID` in `.env` file and you will receive logs notifications in telegram private channel.
-[Here](https://stackoverflow.com/a/56546442/7365971) is guide on how to obtain telegram private channel id.
-Update `TELEGRAM_CHANNEL_ID` in `.env` file.
-7. This app uses a webhook approach to processing bot updates. 
+6. This app uses a webhook approach to processing bot updates. 
 In order to do it your localhost has to be put on the internet.
 You can achieve this by using [ngrok](https://ngrok.com). You need to [install](https://ngrok.com/download) it and run:
    ```shell 
@@ -41,11 +32,11 @@ You can achieve this by using [ngrok](https://ngrok.com). You need to [install](
 
    You will need to copy `Forwarding` part (for example, on the screenshot it will be `https://03d2-146-70-181-35.ngrok-free.app`) and update `APP_BASE_URL` in `.env` file.
 
-8. It's time to run application:
+7. It's time to run application:
    ```shell 
    uvicorn app.run:app --reload
    ```
-9. Go to [127.0.0.1:8000](http://127.0.0.1:8000) in your web browser.
+8. Go to [127.0.0.1:8000](http://127.0.0.1:8000) in your web browser.
 
 ## Tests
 
